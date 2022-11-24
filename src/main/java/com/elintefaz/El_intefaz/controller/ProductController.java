@@ -31,5 +31,6 @@ public class ProductController {
     @PutMapping("/update/{id}")
     public ResponseEntity<ProductsDto> updateProductById(@PathVariable Integer id, @RequestBody @Validated ProductsDto productsDto){
         return ResponseEntity.ok(productsServiceImplementation.updateProductById(id, productsDto));
+
     }
 }
