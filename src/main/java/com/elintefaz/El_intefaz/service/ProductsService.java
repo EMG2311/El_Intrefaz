@@ -14,4 +14,7 @@ public interface ProductsService {
 
     ProductsDto updateProductById(Integer id, ProductsDto productsDto);
 
+    ProductsDto addStockProducts(Integer id,Integer stock);
+
+    ProductsDto delateProducts(Integer id);
 }

@@ -3,6 +3,7 @@ package com.elintefaz.El_intefaz.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.CodePointLength;
 
 import javax.persistence.*;
 
@@ -36,6 +37,9 @@ public class Order {
 
     @Column(nullable = false,name = "amount")
     private Integer amount;
+
+    @Column(nullable = false,name = "finalized")
+    private Boolean finalized;
 
 
 

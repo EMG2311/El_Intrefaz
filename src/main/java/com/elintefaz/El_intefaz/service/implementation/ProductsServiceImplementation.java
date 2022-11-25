@@ -56,5 +56,20 @@ public class ProductsServiceImplementation implements ProductsService {
         return productsDto;
     }
 
+    @Override
+    public ProductsDto addStockProducts(Integer id,Integer stock) {
+        Products products=productsRepository.findById(id).get();
+        products.setStock(products.getStock()+stock);
+        ProductsDto productsDto = productsMapper.converToDto(products);
+        productsRepository.save(products);
+        return productsDto;
+    }
+
+    public ProductsDto delateProducts(Integer id){
+        ProductsDto productsDto=productsMapper.converToDto(productsRepository.findById(id).get());
+        productsRepository.deleteById(id);
+        return productsDto;
+    }
+
 
 }
