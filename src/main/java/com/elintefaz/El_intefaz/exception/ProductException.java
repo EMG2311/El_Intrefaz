@@ -5,7 +5,7 @@ public class ProductException extends RuntimeException{
         super();
     }
     public String getMessage(){
-        return "Product not found or wrong data entered";
+        return "the entered values have to be positive";
     }
 
 }
