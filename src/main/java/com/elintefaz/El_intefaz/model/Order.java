@@ -23,23 +23,21 @@ public class Order {
     @Column(name = "Order_ID")
     private Integer idOrder;
 
-
-
     @Column(nullable = false,name = "High_Date")
     private Date HighDate;
 
     @Column(nullable = false, name = "email")
     private String email;
+    @Column(nullable = false,name = "N_cel")
+    private String nCel;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false, name = "products")
-    private Products products;
-
-    @Column(nullable = false,name = "amount")
-    private Integer amount;
+    @Column(nullable = false, name = "Address")
+    private String address;
 
     @Column(nullable = false,name = "finalized")
     private Boolean finalized;
+
+
 
 
 
