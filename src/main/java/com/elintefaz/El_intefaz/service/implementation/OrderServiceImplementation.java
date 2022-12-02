@@ -32,4 +32,14 @@ public class OrderServiceImplementation implements OrderService {
         }
         return orderDto;
     }
+
+    @Override
+    public OrderDto finalizedOrder(Integer idOrder) {
+        Order order=orderRepository.findById(idOrder).get();
+        order.setFinalized(true);
+        orderRepository.save(order);
+        return orderMapper.converToDto(order);
+    }
+
+
 }

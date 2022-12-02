@@ -14,15 +14,27 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductUsed {
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Integer ProductUsed;
+    @Column(name = "id_Product_Used")
+    private Integer idProductUsed;
+
+
     @ManyToOne
-    @Cascade(CascadeType.ALL)
+    @Cascade(CascadeType.REFRESH)
+    @JoinColumn( name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
     private Products product;
+
     @Column(name = "amount")
     private Integer amount;
+
+    @Column(name="pay")
+    private Double pay;
+
+
     @ManyToOne
-    @Cascade(CascadeType.ALL)
+    @Cascade(CascadeType.REFRESH)
+    @JoinColumn( name = "Order_ID", referencedColumnName = "Order_ID")
     private Order nOrder;
 }

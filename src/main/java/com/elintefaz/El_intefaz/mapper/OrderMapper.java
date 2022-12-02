@@ -15,5 +15,8 @@ public class OrderMapper {
     public Order converToEntity(OrderDto orderDto){
         return mapper.map(orderDto,Order.class);
     }
+    public OrderDto converToDto(Order order){
+        return mapper.map(order,OrderDto.class);
+    }
 
 }
