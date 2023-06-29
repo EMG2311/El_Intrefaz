@@ -31,10 +31,10 @@ public class Products {
     private Double price;
 
     @Column(nullable = false,name = "HIGH_DATE")
-    private Date highDate;
+    private Date star_Date;
 
 
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     @JoinColumn(nullable = false, name = "CATEGORY")
     private Category category;
 

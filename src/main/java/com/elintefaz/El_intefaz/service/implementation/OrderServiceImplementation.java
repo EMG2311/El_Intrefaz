@@ -21,22 +21,23 @@ public class OrderServiceImplementation implements OrderService {
     @Override
     public OrderDto createOrder(OrderDto orderDto) {
         Order order=orderRepository.findByEmail(orderDto.getEmail());
-        if(order != null && order.getFinalized()==false){
+        if(order != null){
             throw new OrderException();
         }
         else{
             Order order1=orderMapper.converToEntity(orderDto);
-            order1.setHighDate(new Date());
-            order1.setFinalized(false);
+            order1.setStarDate(new Date());
             orderRepository.save(order1);
         }
         return orderDto;
     }
 
+
+
     @Override
     public OrderDto finalizedOrder(Integer idOrder) {
         Order order=orderRepository.findById(idOrder).get();
-        order.setFinalized(true);
+        order.setEndDate(new Date());
         orderRepository.save(order);
         return orderMapper.converToDto(order);
     }

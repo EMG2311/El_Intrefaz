@@ -32,20 +32,20 @@ public class ProductsServiceImplementation implements ProductsService {
         }
         Products products=productsMapper.converToEntity(productsDto);
         products.setCategory(categoryRepository.findById(productsDto.getCategory()).get());
-        products.setHighDate(new Date());
+        products.setStar_Date(new Date());
         productsRepository.save(products);
         return productsDto;
     }
 
     @Override
     public List<ProductViewDto> getProducts() {
-        List<ProductViewDto> a= new ArrayList<>();
+        List<ProductViewDto> listaVer= new ArrayList<>();
         for (Products p:productsRepository.findAll()) {
             ProductViewDto productViewDto=productsMapper.converToViewDto(p);
             productViewDto.setCategory( categoryRepository.findById(p.getCategory().getIdCategory()).get().getName());
-            a.add(productViewDto);
+            listaVer.add(productViewDto);
         }
-        return a;
+        return listaVer;
     }
 
     @Override

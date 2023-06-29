@@ -23,6 +23,7 @@ public class ProductController {
         return ResponseEntity.ok(productsServiceImplementation.addProduct(productsDto));
     }
 
+    @CrossOrigin
     @GetMapping("/view")
     public ResponseEntity<List<ProductViewDto>> getProduct(){
         return ResponseEntity.ok(productsServiceImplementation.getProducts());

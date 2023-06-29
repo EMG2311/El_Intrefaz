@@ -19,10 +19,8 @@ public class Category {
     @Column(name = "Id_Category")
     @GeneratedValue(strategy = IDENTITY)
     private Integer idCategory;
-
-
     @Column(name = "name")
-    private String name;
+    private NameCategory name;
 
 
 }
