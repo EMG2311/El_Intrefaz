@@ -1,6 +1,5 @@
 package com.elintefaz.El_intefaz.dto;
 
-import com.elintefaz.El_intefaz.model.NameCategory;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,5 +14,5 @@ public class ProductViewDto {
     @JsonProperty("price")
     private Double price;
     @JsonProperty("category")
-    private NameCategory Category;
+    private String Category;
 }

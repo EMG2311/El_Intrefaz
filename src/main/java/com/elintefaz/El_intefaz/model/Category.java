@@ -20,7 +20,7 @@ public class Category {
     @GeneratedValue(strategy = IDENTITY)
     private Integer idCategory;
     @Column(name = "name")
-    private NameCategory name;
+    private String name;
 
 
 }
