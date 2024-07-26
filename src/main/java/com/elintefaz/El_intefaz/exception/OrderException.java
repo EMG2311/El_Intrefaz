@@ -1,11 +1,12 @@
 package com.elintefaz.El_intefaz.exception;
 
 public class OrderException extends RuntimeException{
-    public OrderException(){
+    public OrderException(String mensaje){
 
-        super();
+        super(mensaje);
     }
+    @Override
     public String getMessage(){
-        return "there is already an order with this email without finalizing";
+        return super.getMessage();
     }
 }

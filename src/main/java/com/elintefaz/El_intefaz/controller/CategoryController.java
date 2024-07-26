@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/category")
@@ -19,7 +19,36 @@ public class CategoryController {
     private CategoriaServiceImplementation categoriaServiceImplementation;
     private static final Logger log= LoggerFactory.getLogger("logToElkAppender");
     @PostMapping("/create")
-    public ResponseEntity<CategoryDto> createCategory(@RequestBody@Validated CategoryDto categoryDto) {
-        return ResponseEntity.ok(categoriaServiceImplementation.CreateCategory(categoryDto));
+    public ResponseEntity<CategoryDto> createCategory(@RequestBody CategoryDto requestCategoryDto) {
+        try{
+            CategoryDto categoryDto=categoriaServiceImplementation.createCategory(requestCategoryDto);
+            if(categoryDto==null){
+                return ResponseEntity.status(400).body(null);
+            }
+            return ResponseEntity.ok(categoryDto);
+        }catch (Exception e){
+            return ResponseEntity.status(500).body(null);
+        }
+    }
+
+    @GetMapping("/toList")
+    public ResponseEntity<List<CategoryDto>> toListCategories(){
+        try {
+            List<CategoryDto> categoryDtos = categoriaServiceImplementation.toListCategory();
+            return ResponseEntity.ok(categoryDtos);
+        }catch (Exception e){
+            return ResponseEntity.status(500).body(null);
+        }
+
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity deleteCategory(@PathVariable Integer id){
+        try{
+            categoriaServiceImplementation.deleteCategory(id);
+            return ResponseEntity.ok(null);
+        }catch (Exception e){
+            return  ResponseEntity.status(500).body(null);
+        }
     }
 }

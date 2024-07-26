@@ -1,20 +1,26 @@
 package com.elintefaz.El_intefaz.service;
 
-import com.elintefaz.El_intefaz.dto.ProductViewDto;
+import com.elintefaz.El_intefaz.dto.ProductUpdateDto;
 import com.elintefaz.El_intefaz.dto.ProductsDto;
-import com.elintefaz.El_intefaz.repository.ProductsRepository;
-import org.springframework.stereotype.Service;
+import com.elintefaz.El_intefaz.model.Products;
 
 import java.util.List;
 
 public interface ProductsService {
     ProductsDto addProduct(ProductsDto productsDto);
 
-    List<ProductViewDto> getProducts();
+    List<ProductsDto> getProducts();
 
-    ProductsDto updateProductById(Integer id, ProductsDto productsDto);
+    ProductsDto getProduct(String name);
 
-    ProductsDto addStockProducts(Integer id,Integer stock);
+    List<ProductsDto> getProductsByCategory(String name);
 
-    ProductsDto delateProducts(Integer id);
+    ProductUpdateDto updateProduct(ProductUpdateDto productsDto);
+
+    ProductsDto addStockProducts(String name,Integer stock);
+    ProductsDto deleteStockProducts(String name,Integer stock);
+
+    ProductsDto delateProducts(String name);
+
+
 }

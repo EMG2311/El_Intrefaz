@@ -5,11 +5,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
 public class ProductException extends RuntimeException{
+    public ProductException(String mansaje){
+        super(mansaje);
+    }
     public ProductException(){
         super();
     }
-    public String getMessage(){
-        return "the entered values have to be positive";
+    @Override
+    public String getMessage() {
+        return super.getMessage();
     }
 
 }
