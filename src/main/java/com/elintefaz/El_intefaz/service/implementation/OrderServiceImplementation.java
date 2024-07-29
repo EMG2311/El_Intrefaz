@@ -1,5 +1,6 @@
 package com.elintefaz.El_intefaz.service.implementation;
 
+import com.elintefaz.El_intefaz.Integration.EmailIntegration;
 import com.elintefaz.El_intefaz.Response.OrderResponse;
 import com.elintefaz.El_intefaz.Response.OrderUpdateResponse;
 import com.elintefaz.El_intefaz.dto.OrderDto;
@@ -38,6 +39,8 @@ public class OrderServiceImplementation implements OrderService {
     private ProductsRepository productsRepository;
     @Autowired
     private OrderItemRepository orderItemRepository;
+    @Autowired
+    private EmailIntegration emailIntegration;
 
     private final static Logger LOGGER =  LoggerFactory.getLogger(OrderServiceImplementation.class);
 
@@ -89,7 +92,8 @@ public class OrderServiceImplementation implements OrderService {
             order.setTotal(total);
             LOGGER.info("----------CREANDO ORDEN----------");
             order = orderRepository.save(order);
-
+            LOGGER.info("----------ENVIANDO EMAIL----------");
+            emailIntegration.sendEmail(order);
             return OrderResponse.builder()
                     .id(order.getIdOrder())
                     .email(order.getEmail())
