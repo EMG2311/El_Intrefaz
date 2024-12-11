@@ -16,7 +16,7 @@ public class EmailIntegration {
     public void sendEmail(Order order) throws ResendException {
         Resend resend = new Resend(this.key);
         CreateEmailOptions params = CreateEmailOptions.builder()
-                .from("Acme <onboarding@resend.dev>")
+                .from("onboarding@resend.dev")
                 .to(order.getEmail())
                 .subject(SUBJET)
                 .html(generateHTML(order))

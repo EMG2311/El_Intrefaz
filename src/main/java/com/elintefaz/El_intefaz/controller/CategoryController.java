@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/category")
+    @RequestMapping("/category")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class CategoryController {
     @Autowired
     private CategoriaServiceImplementation categoriaServiceImplementation;

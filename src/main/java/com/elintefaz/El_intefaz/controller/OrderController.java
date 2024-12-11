@@ -6,6 +6,7 @@ import com.elintefaz.El_intefaz.Response.OrderUpdateResponse;
 import com.elintefaz.El_intefaz.dto.OrderDto;
 import com.elintefaz.El_intefaz.dto.OrderUpdateDto;
 import com.elintefaz.El_intefaz.service.implementation.OrderServiceImplementation;
+import org.modelmapper.spi.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/order")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class OrderController {
     @Autowired
     private OrderServiceImplementation orderServiceImplementation;

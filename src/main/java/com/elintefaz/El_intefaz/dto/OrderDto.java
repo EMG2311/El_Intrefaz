@@ -21,10 +21,8 @@ public class OrderDto {
     private String address;
     @JsonProperty("nCel")
     private String nCel;
+    @Getter
     @JsonProperty("products")
     private List<ProductOrderDto> products;
 
-    public List<ProductOrderDto> getProducts(){
-        return this.products;
-    }
 }

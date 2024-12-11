@@ -137,9 +137,12 @@ public class ProductsServiceImplementation implements ProductsService {
             Products products = productsRepository.findByName(productDto.getName())
                     .orElseThrow(()->new EntityNotFoundException("El producto "+ productDto.getName()+" no existe"));
             products.setName(productDto.getNewName().equals("") ? products.getName() : productDto.getNewName());
-            products.setStock(productDto.getStock().equals(0) ? products.getStock() : productDto.getStock());
-            products.setPrice(productDto.getPrice().equals(0) ? products.getPrice() : productDto.getPrice());
-            products.setCategory(productDto.getCategory().equals("") ? products.getCategory() : categoryRepository.findByName(productDto.getName()).get());
+            products.setStock(productDto.getStock()==null || productDto.getStock().equals(0) ? products.getStock() : productDto.getStock());
+            products.setPrice(productDto.getPrice()==null || productDto.getPrice().equals(0) ? products.getPrice() : productDto.getPrice());
+            products.setCategory(productDto.getCategory()==null || productDto.getCategory().equals("") ? products.getCategory() :
+                    categoryRepository.findByName(productDto.getCategory())
+                            .orElseThrow(()->new EntityNotFoundException("La categoria "+ productDto.getCategory()+" no existe")));
+
             productsRepository.save(products);
             return productDto;
         }catch (EntityNotFoundException nf){
